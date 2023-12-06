@@ -70,13 +70,14 @@ public class tictactoe {
     }
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        int count = 0;
         System.out.print("hi welcome to tic tac toe. the rows and columns are numbered 0-2. who is starting? (x/o): ");
         char move = cross;
         if(input.next().equalsIgnoreCase("o")) {
             move = circle;
         }
         char[][] board = new char[3][3];
-        while(!checkWinner(board)) {
+        while(count < 9) {
             displayBoard(board);
             if(insertMove(board, move)) {
                 if(move == cross) {
@@ -94,7 +95,11 @@ public class tictactoe {
                     System.out.println("\nplayer o wins!");
                 }
                 displayBoard(board);
+                System.exit(1);
             }
+            count++;
         }
+        System.out.print("\ntie! no one wins. ");
+        displayBoard(board);
     }
 }
